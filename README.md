@@ -124,43 +124,9 @@ curl https://bintray.com/sbt/rpm/rpm > bintray-sbt-rpm.repo
 mv bintray-sbt-rpm.repo /etc/yum.repos.d/
 yum install -y sbt nodejs npm
 
-#Need to automate this
 cd /root/search-demo/document_crawler/src/main/webapp
 npm install -g bower
 bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
-#(Choose the Version of Angular JS that mentions "Hortonworks Assembly UI" as the dependent component.)
-
-#post setup
-/root/search-demo/document_crawler/src/main/webapp/bower.json
-{
-  "name": "HortonworksAssemblyFrameworkUI",
-  "description": "Hortonworks Assembly Framework UI",
-  "version": "0.0.1",
-  "homepage": "https://github.com/hortonworks/coe-int",
-  "license": "Apache 2",
-  "private": true,
-  "dependencies": {
-    "angular": "1.2.x",
-    "angular-route": "1.2.x",
-    "angular-loader": "1.2.x",
-    "angular-cookies": "1.2.x",
-    "angular-resource": "1.2.x",
-    "angular-mocks": "~1.2.x",
-    "angular-bootstrap": "~0.11.0",
-    "angular-websocket": "~0.0.5",
-    "angular-sanitize": "1.2.x",
-    "bootstrap": "~3.1.1",
-    "html5-boilerplate": "~4.3.0",
-    "jquery": "~1.9.1",
-    "angular-google-chart": "~0.0.11",
-    "angular-google-maps": "~1.2.1",
-    "angular-leaflet-directive": "~0.7.8"
-  },
-  "resolutions": {
-    "angular": "1.2.x"
-  }
-}
-
 
 cd  /root/search-demo/document_crawler/src/main/webapp
 npm install
