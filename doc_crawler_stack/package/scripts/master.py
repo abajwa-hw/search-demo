@@ -9,7 +9,7 @@ class Master(Script):
     self.configure(env)
     import params
 
-    Execute('~/search-demo/document_crawler_stack/package/scripts/setup.sh > ~/doc-crawler-setup.log')
+    Execute('~/search-demo/doc_crawler_stack/package/scripts/setup.sh > ~/doc-crawler-setup.log')
 
 
   def configure(self, env):
