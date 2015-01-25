@@ -85,7 +85,8 @@ bower install --allow-root --config.interactive=false /root/search-demo/coe-int-
 cd  /root/search-demo/document_crawler/src/main/webapp
 npm install
 
-cd /root/search-demo/document_crawler
-sbt run
+#Run server
+#cd /root/search-demo/document_crawler
+#sbt run
 
 #open sandbox.hortonworks.com:9090
