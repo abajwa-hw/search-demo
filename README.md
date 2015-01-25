@@ -38,6 +38,7 @@ export PATH=$PATH:$M2
 
 - Pull latest code/scripts
 ```
+cd
 git clone https://github.com/abajwa-hw/search-demo.git	
 
 cp -R ~/search-demo/doc_crawler_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
