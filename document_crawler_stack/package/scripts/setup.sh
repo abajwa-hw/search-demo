@@ -1,4 +1,4 @@
-
+#!/bin/bash
 if [ ! -d "/opt/solr" ]; then
     #solr is not on 2.2 but is installed on sandbox 
 	adduser solr

@@ -9,7 +9,7 @@
             <version>1.0.0</version>
             <components>
                 <component>
-                  <name>DOC_CRAWLER</name>
+                  <name>DOCCRAWLER_MASTER</name>
                   <displayName>Document Crawler</displayName>
                   <category>MASTER</category>
                   <cardinality>1</cardinality>
@@ -24,7 +24,7 @@
               <osSpecific>
                 <osFamily>redhat6</osFamily>
                 <packages>
-                   <package>nc</package>                              
+                   <package><name>nc</name></package>                              
                 </packages>
               </osSpecific>
             </osSpecifics>
