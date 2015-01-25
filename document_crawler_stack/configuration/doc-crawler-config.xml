@@ -22,11 +22,11 @@
     <name>install.intellij</name>
     <value>true</value>
     <description>Should IntelliJ also be installed?</description>
- </property>
+ </property>-->
   <property>
     <name>install.mvn</name>
     <value>true</value>
     <description>Should Maven also be installed?</description>
- </property> -->
+ </property> 
 </configuration>
 

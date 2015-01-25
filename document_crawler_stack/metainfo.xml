@@ -24,7 +24,7 @@
               <osSpecific>
                 <osFamily>redhat6</osFamily>
                 <packages>
-                                                        
+                   <package>nc</package>                              
                 </packages>
               </osSpecific>
             </osSpecifics>
