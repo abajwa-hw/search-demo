@@ -28,12 +28,22 @@ git clone https://github.com/abajwa-hw/search-demo.git
 
 - Setup solr user and HDFS dir
 ```
-adduser solr
-mkdir /opt/solr
-chown solr /opt/solr
+if [ ! -d "/opt/solr" ]; then
+    #solr is not on 2.2 but is installed on sandbox 
+	adduser solr
+	mkdir /opt/solr
+	chown solr /opt/solr
 
-sudo -u hdfs hdfs dfs -mkdir -p /user/solr
-sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data
+	sudo -u hdfs hdfs dfs -mkdir -p /user/solr
+	sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data
+	
+	#setup solr
+	cd /opt/solr
+	wget -q http://apache.mirror.gtcomm.net/lucene/solr/4.7.2/solr-4.7.2.tgz
+	tar -xvzf solr-4.7.2.tgz
+	ln -s solr-4.7.2 solr
+fi
+
 sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data/rfi_raw
 sudo -u hdfs hdfs dfs -chown solr /user/solr
 sudo -u hdfs hdfs dfs -chmod -R 777 /user
@@ -53,22 +63,20 @@ hadoop fs -put * /user/solr/data/rfi_raw/
 
 - Setup Solr
 ```
-#setup solr
-cd /opt/solr
-wget -q http://apache.mirror.gtcomm.net/lucene/solr/4.7.2/solr-4.7.2.tgz
-tar -xvzf solr-4.7.2.tgz
-ln -s solr-4.7.2 solr
-cd solr
+cd /opt/solr/solr
 cp -r example hdp 
 rm -rf hdp/example* hdp/multicore
-mv hdp/solr/collection1 hdp/solr/rawdocs
+if [ -d "./hdp/solr/collection1" ]; then
+	mv hdp/solr/collection1 hdp/solr/rawdocs
+else
+	mv hdp/solr/hdp1 hdp/solr/rawdocs
+fi	
 rm -f hdp/solr/rawdocs/core.properties
 
 
 #replace files from git
-cd /root/search-demo
-/bin/cp -f ./document_crawler/artifacts/solrconfig.xml  /opt/solr/solr/hdp/solr/rawdocs/conf/solrconfig.xml
-/bin/cp -f ./document_crawler/artifacts/schema.xml /opt/solr/solr/hdp/solr/rawdocs/conf/schema.xml
+/bin/cp -f /root/search-demo/document_crawler/artifacts/solrconfig.xml  /opt/solr/solr/hdp/solr/rawdocs/conf/solrconfig.xml
+/bin/cp -f /root/search-demo/document_crawler/artifacts/schema.xml /opt/solr/solr/hdp/solr/rawdocs/conf/schema.xml
 
 #Start Solr
 cd /opt/solr/solr/hdp
@@ -84,10 +92,12 @@ curl "http://localhost:8983/solr/admin/cores?action=CREATE&name=rawdocs&instance
 - Use Lucidworks jar to run mapreduce job. This will create seqence file, parse with Apache Tika from binary docs, build index and store index on HDFS
 ```
 #cp /root/search-demo/document_crawler/artifacts/lucidworks-hadoop-1.2.0-0-0.tar.gz /root
+
 cd /root
 wget http://package.mapr.com/tools/search/lucidworks-hadoop-1.2.0-0-0.tar.gz
 tar xvzf lucidworks-hadoop-1.2.0-0-0.tar.gz
 cp lucidworks-hadoop-1.2.0-0-0/hadoop/hadoop-lws-job-1.2.0-0-0.jar /tmp
+
 yarn jar /tmp/hadoop-lws-job-1.2.0-0-0.jar com.lucidworks.hadoop.ingest.IngestJob -Dlww.commit.on.close=true -Dadd.subdirectories=true -cls com.lucidworks.hadoop.ingest.DirectoryIngestMapper -c rawdocs -i /user/solr/data/rfi_raw/ -of com.lucidworks.hadoop.io.LWMapRedOutputFormat -s http://sandbox.hortonworks.com:8983/solr
 ```
 

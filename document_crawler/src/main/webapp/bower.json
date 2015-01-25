@@ -21,5 +21,8 @@
     "angular-google-chart": "~0.0.11",
     "angular-google-maps": "~1.2.1",
     "angular-leaflet-directive": "~0.7.8"
+  },
+  "resolutions": {
+    "angular": "1.2.x"
   }
 }
