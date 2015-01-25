@@ -23,7 +23,7 @@ ssh root@sandbox.hortonworks.com
 ```
 - Pull latest code/scripts
 ```
-git clone https://github.com/abajwa-hw/document-crawler.git	
+git clone https://github.com/abajwa-hw/search-demo.git	
 ```
 
 - Setup solr user and HDFS dir
@@ -41,7 +41,7 @@ sudo -u hdfs hdfs dfs -chmod -R 777 /user
 - Copy the documents to HDFS
 ```
 #Move search docs to HDFS
-cd /root/document-crawler
+cd /root/search-demo
 unzip RFIsForSolr.zip
 cd RFIsForSolr
 
@@ -66,7 +66,7 @@ rm -f hdp/solr/rawdocs/core.properties
 
 
 #replace files from git
-cd /root/document-crawler
+cd /root/search-demo
 /bin/cp -f ./document_crawler/artifacts/solrconfig.xml  /opt/solr/solr/hdp/solr/rawdocs/conf/solrconfig.xml
 /bin/cp -f ./document_crawler/artifacts/schema.xml /opt/solr/solr/hdp/solr/rawdocs/conf/schema.xml
 
@@ -83,7 +83,7 @@ curl "http://localhost:8983/solr/admin/cores?action=CREATE&name=rawdocs&instance
 
 - Use Lucidworks jar to run mapreduce job. This will create seqence file, parse with Apache Tika from binary docs, build index and store index on HDFS
 ```
-#cp /root/document-crawler/document_crawler/artifacts/lucidworks-hadoop-1.2.0-0-0.tar.gz /root
+#cp /root/search-demo/document_crawler/artifacts/lucidworks-hadoop-1.2.0-0-0.tar.gz /root
 cd /root
 wget http://package.mapr.com/tools/search/lucidworks-hadoop-1.2.0-0-0.tar.gz
 tar xvzf lucidworks-hadoop-1.2.0-0-0.tar.gz
@@ -115,13 +115,13 @@ mv bintray-sbt-rpm.repo /etc/yum.repos.d/
 yum install -y sbt nodejs npm
 
 #Need to automate this
-cd /root/document-crawler/document_crawler/src/main/webapp
+cd /root/search-demo/document_crawler/src/main/webapp
 npm install -g bower
-bower install --allow-root --config.interactive=false /root/document-crawler/coe-int-master/
+bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
 #(Choose the Version of Angular JS that mentions "Hortonworks Assembly UI" as the dependent component.)
 
 #post setup
-/root/document-crawler/document_crawler/src/main/webapp/bower.json
+/root/search-demo/document_crawler/src/main/webapp/bower.json
 {
   "name": "HortonworksAssemblyFrameworkUI",
   "description": "Hortonworks Assembly Framework UI",
@@ -152,10 +152,10 @@ bower install --allow-root --config.interactive=false /root/document-crawler/coe
 }
 
 
-cd  /root/document-crawler/document_crawler/src/main/webapp
+cd  /root/search-demo/document_crawler/src/main/webapp
 npm install
 
-cd /root/document-crawler/document_crawler
+cd /root/search-demo/document_crawler
 sbt run
 
 #open sandbox.hortonworks.com:9090
