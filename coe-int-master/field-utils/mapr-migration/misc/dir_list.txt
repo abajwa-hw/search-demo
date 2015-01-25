@@ -1,0 +1,10 @@
+# This is a sample set.
+# INI Style Control File used in a Migration (DO NOT REMOVE THIS LINE, THE SCRIPT EXPECTS THIS BEFORE THE FIRST SECTION)
+[div.x.src]
+/apps/hive/warehouse/divx.db
+/user/divx/data
+
+[div.y.src]
+/apps/hive/warehouse/divy.db
+/user/divy/data
+

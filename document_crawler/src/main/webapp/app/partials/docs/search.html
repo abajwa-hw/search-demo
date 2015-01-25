@@ -1,0 +1,99 @@
+<div ng-controller="DocSearchCtrl">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Apache Solr + Lucidworks Connector Document Search</h3>
+				</div>
+				<div class="panel-body">
+					<p>Apache Solr provides a REST-like interface for searching
+						indexed data. The search syntax follows the pattern of
+						'field:search query'. Those fields correspond to the schema
+						defined in the Apache Solr Core.  Lucidworks provides a connector allowing users to index multi-structured document data such as PDF, Docx, VSD, and XLSX.</p>
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-heading">Query</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-5">
+										<p>
+										<form novalidate class="simple-form" name="searchQuery">
+											<div class="input-group">
+												<input type="text" name="query" ng-model="query.q" size="35"
+													class="form-control" placeholder="Search Query" />
+													<span id="spinner"
+													class="input-group-addon"><img
+													src="img/ajax-loader.gif"></span>
+													<span class="input-group-btn">
+													<button class="btn btn-default" type="button" ng-click="search(query)">Search</button>
+													</span>
+											</div>
+										</form>
+										</p>
+									</div>
+									<div class="col-md-2">&nbsp;</div>
+									<div class="col-md-5 text-right" google-chart chart="chart" style="" ng-show="results.length > 0 && error == false"></div>
+								</div>
+								<div id="paginatedTable"
+									ng-show="results.length > 0 && error == false">
+									<pagination total-items="totalItems" max-size="maxSize"
+										class="pagination-sm" boundary-links="true" rotate="false"
+										num-pages="numPages" ng-model="currentPage"
+										ng-change="pageChanged()"></pagination>
+									<table class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<td>Date</td>
+												<td>Last Author</td>
+												<td>Matches</td>
+												<td>Doc Viewer</td>
+											</tr>
+										</thead>
+										<tr ng-repeat="object in results">
+											<td class="date">{{object.date | convertJavaDate | date:'yyyy-MMM'}}</td>
+											<td class="author">{{object.last_author == undefined ? object.author : object.last_author}}{{object.publisher == undefined ? "" : " for " + object.publisher}}</td>
+											<td>
+												<ul class="snippetList">
+													<li ng-repeat="snippet in highlights[object.id][0]">
+														<span class="highlight-snippet" ng-bind-html="snippet"></span>
+													</li>
+												</ul>
+											</td>
+											<td>
+												<button class="btn btn-default " ng-click="open(object.body, highlights[object.id])">Open Document</button>
+										</tr>
+									</table>
+								</div>
+								<div ng-show="results.length == 0 && error == false"
+									class="alert alert-info">
+									<strong>No results found</strong> Try another search query.
+								</div>
+								<div ng-show="error == true" class="alert alert-danger">
+									<strong>{{errorStatus}} - Issue with Search Operation</strong>
+									<em>{{errorMessage}}</em>
+								</div>
+								<div ng-hide="query.q != ''" class="alert alert-info">
+									Solr offers a rich query syntax. Try a query that targets a
+									specific field like <em>status</em> using the syntax:
+									"status:200"
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/ng-template" id="docModalContent.html">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Document Viewer</h4>
+      </div>
+      <div class="modal-body">
+        <div id="docBody" class="doc-body" ng-bind-html="docBody"></div>
+      </div>
+      <div class="modal-footer">
+		  <button class="btn btn-default" ng-click="close()">Close</button>
+      </div>
+	</script>
+</div>

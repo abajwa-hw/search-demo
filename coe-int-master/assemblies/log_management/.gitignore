@@ -1,0 +1,7 @@
+dist/*
+target/
+.DS_Store
+.classpath
+.project
+.settings
+state/*

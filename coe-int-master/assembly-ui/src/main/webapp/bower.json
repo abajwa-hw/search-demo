@@ -1,0 +1,24 @@
+{
+  "name": "HortonworksAssemblyFrameworkUI",
+  "description": "Hortonworks Assembly Framework UI",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hortonworks/coe-int",
+  "license": "Apache 2",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-cookies": "1.2.x",
+    "angular-resource": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "angular-bootstrap": "~0.11.0",
+    "angular-websocket": "~0.0.5",
+    "bootstrap": "~3.1.1",
+    "html5-boilerplate": "~4.3.0",
+    "jquery": "~1.9.1",
+    "angular-google-chart": "~0.0.11",
+    "angular-google-maps": "~1.2.1",
+    "angular-leaflet-directive": "~0.7.8"
+  }
+}

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+METASTORE_HOST=localhost
+METASTORE_USER=hive
+METASTORE_PASSWORD=hive
+METASTORE_DATABASE=hivedb

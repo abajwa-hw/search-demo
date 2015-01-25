@@ -1,0 +1,79 @@
+<div ng-controller="HbaseScanCtrl">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Apache HBase Log Retrieval</h3>
+				</div>
+				<div class="panel-body">
+					<p>Apache HBase provides...</p>
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-heading">Scan Request</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-8">
+										<p>
+										<form novalidate class="form-inline" name="scanRequest">
+											<div class="form-group">
+												<input type="text" name="startRow" ng-model="startRow"
+													size="35" class="form-control" placeholder="Start Row" />
+											</div>
+											<div class="form-group">
+												<div class="input-group">
+													<input type="text" name="endRow" ng-model="endRow"
+														size="35" class="form-control" placeholder="End Row" /> <span
+														id="spinner" class="input-group-addon"
+														style="display: none;"><img
+														src="img/ajax-loader.gif"></span>
+												</div>
+											</div>
+											<button class="btn btn-default" type="button"
+												ng-click="scan(startRow, endRow)">Scan</button>
+										</form>
+										</p>
+									</div>
+									<div id="spinner" class="col-md-1" style="display: none;">
+										<img src="img/ajax-loader.gif">
+									</div>
+								</div>
+								<div id="paginatedTable" ng-show="results.length > 0 && error == false">
+									<table class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<td>Key</td>
+												<td>Time</td>
+												<td>IP Address</td>
+												<td>Status</td>
+												<td>Referrer</td>
+												<td>Bytes Transfered</td>
+												<td>Request</td>
+											</tr>
+										</thead>
+										<tr ng-repeat="row in results">
+											<td>{{row.rowkey}}</td>
+											<td>{{row.request_time | date:'medium'}}</td>
+											<td>{{row.request_remoteaddr}}</td>
+											<td>{{row.request_status}}</td>
+											<td>{{row.request_referrer}}</td>
+											<td>{{row.request_bytes}}</td>
+											<td>{{row.request_request}}</td>
+										</tr>
+									</table>
+								</div>
+								<div ng-show="(results == undefined || results.length == 0) && error == false"
+									class="alert alert-info">
+									<strong>No results found</strong> Try another search set of rows.
+								</div>
+								<div ng-show="error == true" class="alert alert-danger">
+									<strong>{{errorStatus}} - Issue with Scan Operation</strong>
+									<em>{{errorMessage}}</em>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
