@@ -1,11 +1,17 @@
 #!/bin/bash
 set -e 
 
-echo "Stopping sbt"
-ps -ef | grep "sb[t]" | awk '{print $2}' | xargs kill
+if [[ `ps -ef | grep "sb[t]" | wc -l` -gt 0 ]] 
+then
+	echo "Stopping sbt"
+	ps -ef | grep "sb[t]" | awk '{print $2}' | xargs kill
+fi
 
-echo "Stopping Solr"
-ps -ef | grep "start.ja[r]" | awk '{print $2}' | xargs kill
+if [[ `ps -ef | grep "start.ja[r]" | wc -l` -gt 0 ]] 
+then
+	echo "Stopping Solr"
+	ps -ef | grep "start.ja[r]" | awk '{print $2}' | xargs kill
+fi
 
 echo "Done"
 
