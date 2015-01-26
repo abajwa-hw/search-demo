@@ -27,7 +27,8 @@ unzip RFIsForSolr.zip
 cd RFIsForSolr
 
 #remove spaces
-for file in *; do mv "$file" `echo $file | tr ' ' '_'` ; done
+find . -iname '* *' -execdir bash -c 'mv "$1" "${1// /_}"' _ {} \;
+
 hadoop fs -put * /user/solr/data/rfi_raw/
 
 
