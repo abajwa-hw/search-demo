@@ -24,7 +24,8 @@
               <osSpecific>
                 <osFamily>redhat6</osFamily>
                 <packages>
-                   <package><name>nc</name></package>                              
+                   <package><name>nojejs</name></package>  
+                   <package><name>npm</name></package>                                                 
                 </packages>
               </osSpecific>
             </osSpecifics>

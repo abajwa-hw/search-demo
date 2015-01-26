@@ -5,9 +5,5 @@ from resource_management import *
 # server configurations
 config = Script.get_config()
 
-#install_eclipse = config['configurations']['vnc-config']['install.eclipse']
-#install_intellij = config['configurations']['vnc-config']['install.intellij']
-install_mvn = config['configurations']['vnc-config']['install.mvn']
-#vnc_password = config['configurations']['vnc-config']['vnc.password']
-#vnc_geometry = config['configurations']['vnc-config']['vnc.geometry']
+#install_mvn = config['configurations']['vnc-config']['install.mvn']
 
