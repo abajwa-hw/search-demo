@@ -27,7 +27,7 @@ class Master(Script):
 	
 
   def status(self, env):
-    Execute('(ps -ef | grep "sbt ru[n]" | wc -l) && (ps -ef | grep "start.ja[r] | wc -l")')
+    Execute('(ps -ef | grep "sb[t]" | wc -l) && (ps -ef | grep "start.ja[r] | wc -l")')
 
 
 if __name__ == "__main__":
