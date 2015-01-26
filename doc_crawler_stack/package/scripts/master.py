@@ -10,7 +10,7 @@ class Master(Script):
     import params
     
     #First run setup script which has simple shell setup
-    Execute('echo "\n\n\n\n"' + params.stack_dir + '/package/scripts/setup.sh >> ' + params.stack_log)
+    Execute(params.stack_dir + '/package/scripts/setup.sh >> ' + params.stack_log)
 
     #Now setup npm/bower  
     #Execute('echo "Starting bower install..." >> ' + params.stack_log)

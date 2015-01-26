@@ -50,7 +50,8 @@ rm -f hdp/solr/rawdocs/core.properties
 
 echo "Starting Solr"
 cd /opt/solr/solr/hdp
-nohup java -jar start.jar & >> /var/log/doc-crawler.log
+#nohup java -jar start.jar >> /var/log/doc-crawler.log &
+java -jar start.jar >> /var/log/doc-crawler.log &
 sleep 10
 #Create core called rawdocs
 curl "http://localhost:8983/solr/admin/cores?action=CREATE&name=rawdocs&instanceDir=/opt/solr/solr/hdp/solr/rawdocs/"
