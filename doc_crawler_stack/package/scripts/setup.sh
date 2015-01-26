@@ -90,7 +90,7 @@ echo "Completed bower install"
 
 echo "Starting npm imstall..."
 cd  /root/search-demo/document_crawler/src/main/webapp
-npm install
+nohup npm install & >> /var/log/doc-crawler.log
 echo "Stack installed successfully"
 exit 0
 
