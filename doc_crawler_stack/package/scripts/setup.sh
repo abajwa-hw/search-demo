@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e 
 
 if [ ! -d "/opt/solr" ]; then
     #solr is not on 2.2 but is installed on sandbox 
@@ -85,6 +86,7 @@ bower install --allow-root --config.interactive=false /root/search-demo/coe-int-
 
 cd  /root/search-demo/document_crawler/src/main/webapp
 npm install
+exit 0
 
 #Run server
 #cd /root/search-demo/document_crawler

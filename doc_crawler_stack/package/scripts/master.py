@@ -17,7 +17,7 @@ class Master(Script):
     env.set_params(params)
 
   def stop(self, env):
-    Execute('ps -ef | grep "sbt ru[n]" | awk '{print $2}' | xargs kill')
+    Execute('ps -ef | grep "sb[t]" | awk '{print $2}' | xargs kill')
     Execute('ps -ef | grep "start.ja[r]" | awk '{print $2}' | xargs kill')
       
   def start(self, env):
