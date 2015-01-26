@@ -7,7 +7,7 @@ if [ $SOLR_PIDS -eq 0 ]
 then
 	echo "Solr not running. Starting Solr..."
 	cd /opt/solr/solr/hdp
-	nohup java -jar start.jar >> ~/solr.log &
+	nohup java -jar start.jar >> /var/log/solr.log &
 else
 	echo "Solr already running..."
 fi
@@ -15,7 +15,7 @@ fi
 
 echo "Starting sbt..."
 cd /root/search-demo/document_crawler
-nohup sbt run >> ~/doc-crawler-setup.log &
+nohup sbt run >> /var/log/doc-crawler-setup.log &
 
 exit 0
 
