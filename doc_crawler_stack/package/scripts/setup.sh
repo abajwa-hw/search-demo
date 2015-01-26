@@ -50,7 +50,7 @@ rm -f hdp/solr/rawdocs/core.properties
 
 echo "Starting Solr"
 cd /opt/solr/solr/hdp
-nohup java -jar start.jar &
+nohup java -jar start.jar & >> /var/log/doc-crawler.log
 sleep 10
 #Create core called rawdocs
 curl "http://localhost:8983/solr/admin/cores?action=CREATE&name=rawdocs&instanceDir=/opt/solr/solr/hdp/solr/rawdocs/"
@@ -85,15 +85,15 @@ echo "Completed sbt, nodejs, npm install"
 #Moved these to setup method in master.py
 
 #echo "Starting bower install..."
-#cd /root/search-demo/document_crawler/src/main/webapp
-#npm install -g bower
-#bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
-#echo "Completed bower install"
+cd /root/search-demo/document_crawler/src/main/webapp
+npm install -g bower
+bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
+echo "Completed bower install"
 
 #echo "Starting npm imstall..."
-#cd  /root/search-demo/document_crawler/src/main/webapp
-#nohup npm install & >> /var/log/doc-crawler.log
-#echo "Stack installed successfully"
+cd  /root/search-demo/document_crawler/src/main/webapp
+nohup npm install & >> /var/log/doc-crawler.log
+echo "Stack installed successfully"
 
 exit 0
 
