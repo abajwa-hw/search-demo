@@ -82,11 +82,13 @@ mv bintray-sbt-rpm.repo /etc/yum.repos.d/
 yum install -y sbt nodejs npm
 echo "Completed sbt, nodejs, npm install"
 
-echo "Starting bower install..."
-cd /root/search-demo/document_crawler/src/main/webapp
-npm install -g bower
-bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
-echo "Completed bower install"
+#Moved these to setup method in master.py
+
+#echo "Starting bower install..."
+#cd /root/search-demo/document_crawler/src/main/webapp
+#npm install -g bower
+#bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
+#echo "Completed bower install"
 
 #echo "Starting npm imstall..."
 #cd  /root/search-demo/document_crawler/src/main/webapp
@@ -94,6 +96,8 @@ echo "Completed bower install"
 #echo "Stack installed successfully"
 
 exit 0
+
+#Moved these to start method in master.py
 
 #Run server
 #cd /root/search-demo/document_crawler
