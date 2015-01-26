@@ -64,6 +64,11 @@ sudo service ambari restart
 sudo service ambari-server restart
 ```
 
+- In case you need to remove the Document Crawler stack from Ambari in the future, run below:
+```
+curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
+``` 
+
 ####### Manual setup
 
 - Setup solr user and HDFS dir
