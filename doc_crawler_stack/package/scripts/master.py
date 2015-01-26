@@ -9,7 +9,9 @@ class Master(Script):
     self.configure(env)
     import params
     Execute(params.stack_dir + '/package/scripts/setup.sh >> ' + params.stack_log)
-
+    
+    Execute('cd /root/search-demo/document_crawler/src/main/webapp; npm install  >> ' + params.stack_log)
+    Execute('echo "Stack installed successfully"')
 
   def configure(self, env):
     import params

@@ -88,10 +88,11 @@ npm install -g bower
 bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
 echo "Completed bower install"
 
-echo "Starting npm imstall..."
-cd  /root/search-demo/document_crawler/src/main/webapp
-nohup npm install & >> /var/log/doc-crawler.log
-echo "Stack installed successfully"
+#echo "Starting npm imstall..."
+#cd  /root/search-demo/document_crawler/src/main/webapp
+#nohup npm install & >> /var/log/doc-crawler.log
+#echo "Stack installed successfully"
+
 exit 0
 
 #Run server
