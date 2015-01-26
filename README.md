@@ -67,7 +67,7 @@ sudo service ambari-server restart
 
 - Once its up, you can access the demo from within Ambari via the "Document Crawler" view
 
-- In case you need to remove the Document Crawler stack from Ambari in the future, run below:
+- In case you need to remove the Document Crawler stack from Ambari in the future, run below and then restart Ambari:
 ```
 curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
 ``` 
