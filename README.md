@@ -63,13 +63,15 @@ sudo service ambari restart
 #on other HDP 2.2 setups
 sudo service ambari-server restart
 ```
+- Now launch Ambari and add the "Document crawler" stack to setup the demo. Once its up, you can access the demo from within Ambari via the "Document Crawler" view
+
 
 - In case you need to remove the Document Crawler stack from Ambari in the future, run below:
 ```
 curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
 ``` 
 
-####### Manual setup
+####### Manual setup instructions
 
 - Setup solr user and HDFS dir
 ```
