@@ -20,7 +20,7 @@
                   </commandScript>
                 </component>
             </components>
-            <osSpecifics>
+            <!-- <osSpecifics>
               <osSpecific>
                 <osFamily>redhat6</osFamily>
                 <packages>
@@ -28,7 +28,7 @@
                    <package><name>npm</name></package>                                                 
                 </packages>
               </osSpecific>
-            </osSpecifics>
+            </osSpecifics> -->
       	    <configuration-dependencies>
         	<config-type>doc-crawler-config</config-type>
       	    </configuration-dependencies>
