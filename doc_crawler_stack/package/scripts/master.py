@@ -17,14 +17,17 @@ class Master(Script):
     env.set_params(params)
 
   def stop(self, env):
-    Execute('cd /root/search-demo/document_crawler;sbt stop;')
+    Execute('ps -ef | grep "sbt ru[n]" | awk '{print $2}' | xargs kill')
+    Execute('ps -ef | grep "start.ja[r]" | awk '{print $2}' | xargs kill')
       
   def start(self, env):
     import params
-    Execute('cd /root/search-demo/document_crawler;sbt run;')
+    Execute('cd /root/search-demo/document_crawler; nohup sbt run >> ~/doc-crawler-setup.log &;')
+	Execute('cd /opt/solr/solr/hdp; nohup java -jar start.jar >> ~/solr.log &;')
+	
 
   def status(self, env):
-    Execute('cd /root/search-demo/document_crawler;sbt status;')
+    Execute('(ps -ef | grep "sbt ru[n]" | wc -l) && (ps -ef | grep "start.ja[r] | wc -l")')
 
 
 if __name__ == "__main__":
