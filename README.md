@@ -63,8 +63,9 @@ sudo service ambari restart
 #on other HDP 2.2 setups
 sudo service ambari-server restart
 ```
-- Now launch Ambari and add the "Document crawler" stack to setup the demo. Once its up, you can access the demo from within Ambari via the "Document Crawler" view
+- Now launch Ambari and add the "Document crawler" service via "Actions" > "Add service". This will setup and start the demo 
 
+- Once its up, you can access the demo from within Ambari via the "Document Crawler" view
 
 - In case you need to remove the Document Crawler stack from Ambari in the future, run below:
 ```

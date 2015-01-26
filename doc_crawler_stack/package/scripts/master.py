@@ -17,7 +17,7 @@ class Master(Script):
 
   def stop(self, env):
     import params
-  	Execute(params.stack_dir + '/package/scripts/stop.sh >> ' + params.stack_log)
+    Execute(params.stack_dir + '/package/scripts/stop.sh >> ' + params.stack_log)
       
   def start(self, env):
     import params
@@ -27,7 +27,6 @@ class Master(Script):
   def status(self, env):
     import params
     Execute(params.stack_dir + '/package/scripts/status.sh >> ' + params.stack_log)
-
 
 if __name__ == "__main__":
   Master().execute()
