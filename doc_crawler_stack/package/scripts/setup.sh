@@ -47,7 +47,7 @@ rm -f hdp/solr/rawdocs/core.properties
 /bin/cp -f /root/search-demo/document_crawler/artifacts/solrconfig.xml  /opt/solr/solr/hdp/solr/rawdocs/conf/solrconfig.xml
 /bin/cp -f /root/search-demo/document_crawler/artifacts/schema.xml /opt/solr/solr/hdp/solr/rawdocs/conf/schema.xml
 
-#Start Solr
+echo "Starting Solr"
 cd /opt/solr/solr/hdp
 nohup java -jar start.jar &
 sleep 10
@@ -62,30 +62,35 @@ cd /root
 wget http://package.mapr.com/tools/search/lucidworks-hadoop-1.2.0-0-0.tar.gz
 tar xvzf lucidworks-hadoop-1.2.0-0-0.tar.gz
 cp lucidworks-hadoop-1.2.0-0-0/hadoop/hadoop-lws-job-1.2.0-0-0.jar /tmp
-
+echo "starting mapreduce job"
 yarn jar /tmp/hadoop-lws-job-1.2.0-0-0.jar com.lucidworks.hadoop.ingest.IngestJob -Dlww.commit.on.close=true -Dadd.subdirectories=true -cls com.lucidworks.hadoop.ingest.DirectoryIngestMapper -c rawdocs -i /user/solr/data/rfi_raw/ -of com.lucidworks.hadoop.io.LWMapRedOutputFormat -s http://sandbox.hortonworks.com:8983/solr
 
-#setup banan
+echo "setup banana"
 cd /opt/solr
 git clone https://github.com/LucidWorks/banana.git
 mv /opt/solr/banana /opt/solr/solr-4.7.2/hdp/solr-webapp/webapp/	
 
-#change collection1 to rawdocs
+echo "change collection1 to rawdocs..."
 sed -i 's/collection1/rawdocs/g' /opt/solr/solr-4.7.2/hdp/solr-webapp/webapp/banana/src/app/dashboards/default.json
 
 
-
+echo "Installing sbt, nodejs, npm ..."
 #install sbt, nojejs, npm
 curl https://bintray.com/sbt/rpm/rpm > bintray-sbt-rpm.repo
 mv bintray-sbt-rpm.repo /etc/yum.repos.d/
 yum install -y sbt nodejs npm
+echo "Completed sbt, nodejs, npm install"
 
+echo "Starting bower install..."
 cd /root/search-demo/document_crawler/src/main/webapp
 npm install -g bower
 bower install --allow-root --config.interactive=false /root/search-demo/coe-int-master/
+echo "Completed bower install"
 
+echo "Starting npm imstall..."
 cd  /root/search-demo/document_crawler/src/main/webapp
 npm install
+echo "Stack installed successfully"
 exit 0
 
 #Run server

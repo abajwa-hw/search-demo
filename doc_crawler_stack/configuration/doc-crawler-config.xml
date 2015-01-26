@@ -3,10 +3,16 @@
  
 <configuration>
 
-  <!-- <property>
-    <name>install.mvn</name>
-    <value>true</value>
-    <description>Should Maven also be installed?</description>
- </property>  -->
+  <property>
+    <name>stack.dir</name>
+    <value>/var/lib/ambari-server/resources/stacks/HDP/2.2/services/doc_crawler_stack</value>
+    <description>Stack dir from where to run setup/start/stop scripts</description>
+  </property> 
+  <property>
+    <name>stack.log</name>
+    <value>/var/log/doc-crawler.log</value>
+    <description>Log file for setup/start/stop scripts</description>
+  </property> 
+  
 </configuration>
 

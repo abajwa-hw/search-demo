@@ -8,8 +8,7 @@ class Master(Script):
     self.install_packages(env)
     self.configure(env)
     import params
-
-    Execute('~/search-demo/doc_crawler_stack/package/scripts/setup.sh > ~/doc-crawler-setup.log')
+    Execute(params.stack_dir + '/package/scripts/setup.sh >> ' + params.stack_log)
 
 
   def configure(self, env):
@@ -17,17 +16,17 @@ class Master(Script):
     env.set_params(params)
 
   def stop(self, env):
-    Execute('ps -ef | grep "sb[t]" | awk '{print $2}' | xargs kill')
-    Execute('ps -ef | grep "start.ja[r]" | awk '{print $2}' | xargs kill')
+    import params
+  	Execute(params.stack_dir + '/package/scripts/stop.sh >> ' + params.stack_log)
       
   def start(self, env):
     import params
-    Execute('cd /root/search-demo/document_crawler; nohup sbt run >> ~/doc-crawler-setup.log &;')
-	Execute('cd /opt/solr/solr/hdp; nohup java -jar start.jar >> ~/solr.log &;')
+    Execute(params.stack_dir + '/package/scripts/start.sh >> ' + params.stack_log)
 	
 
   def status(self, env):
-    Execute('(ps -ef | grep "sb[t]" | wc -l) && (ps -ef | grep "start.ja[r] | wc -l")')
+    import params
+    Execute(params.stack_dir + '/package/scripts/status.sh >> ' + params.stack_log)
 
 
 if __name__ == "__main__":

@@ -5,5 +5,6 @@ from resource_management import *
 # server configurations
 config = Script.get_config()
 
-#install_mvn = config['configurations']['vnc-config']['install.mvn']
+stack_dir = config['configurations']['doc-crawler-config']['stack.dir']
+stack_log = config['configurations']['doc-crawler-config']['stack.log']
 
