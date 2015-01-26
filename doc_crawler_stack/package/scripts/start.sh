@@ -16,7 +16,7 @@ fi
 
 echo "Starting sbt..."
 cd /root/search-demo/document_crawler
-sbt run 
+sbt run  >> /var/log/doc-crawler.log
 echo "Sbt started"
 
 exit 0
