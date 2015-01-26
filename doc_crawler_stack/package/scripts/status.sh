@@ -6,11 +6,14 @@ set -e
 RET1=`ps -ef | grep "sb[t]" | wc -l`
 RET2=`ps -ef | grep "start.ja[r]" | wc -l`
 
+echo "sbt status is $RET1"
+echo "solr status is $RET2"
+
 if [[ $RET1 -gt 0 && $RET2 -gt 0 ]]
 then
-	echo 1
+	exit 1
 else 
-	echo 0
+	exit 0
 fi
 
 
