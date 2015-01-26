@@ -10,8 +10,8 @@ The webinar recording and slides are available at http://hortonworks.com/partner
 
 These setup steps are only needed first time
 
-- Download HDP 2.1 sandbox VM image (Hortonworks_Sandbox_2.1.ova) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/)
-- Import Hortonworks_Sandbox_2.1.ova into VMWare and configure its memory size to be at least 8GB RAM 
+- Download HDP 2.2 sandbox VM image (Sandbox_HDP_2.2_VMware.ova) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/)
+- Import Sandbox_HDP_2.2_VMware.ova into VMWare and configure its memory size to be at least 8GB RAM 
 - Find the IP address of the VM and add an entry into your machines hosts file e.g.
 ```
 192.168.191.241 sandbox.hortonworks.com sandbox    
