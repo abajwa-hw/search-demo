@@ -17,6 +17,6 @@ echo "Starting sbt..."
 cd /root/search-demo/document_crawler
 nohup sbt run >> ~/doc-crawler-setup.log &
 
-	
+exit 0
 
 
