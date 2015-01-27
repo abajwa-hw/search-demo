@@ -109,16 +109,16 @@ echo "Completed sbt, nodejs, npm install"
 
 #Moved these to setup method in master.py
 
-echo "Starting bower install..."
-cd $DEMO_ROOT/document_crawler/src/main/webapp
-npm install -g bower >> $LOGFILE
-bower install --allow-root --config.interactive=false $DEMO_ROOT/coe-int-master/ >> $LOGFILE
-echo "Completed bower install"
+#echo "Starting bower install..."
+#cd $DEMO_ROOT/document_crawler/src/main/webapp
+#npm install -g bower >> $LOGFILE
+#bower install --allow-root --config.interactive=false $DEMO_ROOT/coe-int-master/ >> $LOGFILE
+#echo "Completed bower install"
 
-echo "Starting npm imstall..."
-cd  $DEMO_ROOT/document_crawler/src/main/webapp
-npm install >> $LOGFILE
-echo "Stack installed successfully"
+#echo "Starting npm imstall..."
+#cd  $DEMO_ROOT/document_crawler/src/main/webapp
+#npm install >> $LOGFILE
+#echo "Stack installed successfully"
 
 exit 0
 
