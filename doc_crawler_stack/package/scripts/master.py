@@ -59,7 +59,7 @@ class Master(Script):
     Execute('/bin/cp -f '+params.demo_dir+'/document_crawler/artifacts/schema.xml '+params.solr_dir+'/solr/hdp/solr/rawdocs/conf/schema.xml')
 
     Execute('echo "Starting Solr"')
-    Execute(params.stack_dir + '/package/scripts/start_solr.sh')
+    Execute(params.stack_dir + '/package/scripts/start_solr.sh ' + params.solr_dir + ' ' + params.stack_log)
     Execute('sleep 10')
     #Create core called rawdocs
     Execute('curl "http://localhost:8983/solr/admin/cores?action=CREATE&name=rawdocs&instanceDir='+params.solr_dir+'/solr/hdp/solr/rawdocs/"')
