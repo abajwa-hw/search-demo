@@ -27,7 +27,9 @@ then
 	ln -s solr-4.7.2 solr
 fi
 
+set +e
 sudo -u hdfs hdfs dfs -test -d /user/solr/data/rfi_raw
+set -e
 if [ $? -eq 0 ]
 then
 	sudo -u hdfs hdfs dfs -rmr /user/solr/data/rfi_raw
@@ -55,10 +57,13 @@ hadoop fs -put * /user/solr/data/rfi_raw/
 cd $SOLR_PATH/solr
 cp -r example hdp 
 rm -rf hdp/example* hdp/multicore
-if [ -d "./hdp/solr/collection1" ]; then
-	mv hdp/solr/collection1 hdp/solr/rawdocs
-else
-	mv hdp/solr/hdp1 hdp/solr/rawdocs
+
+if [ ! -d "$SOLR_PATH/solr/hdp/solr/rawdocs/"]; then
+	if [ -d "./hdp/solr/collection1" ]; then
+		mv hdp/solr/collection1 hdp/solr/rawdocs
+	else
+		mv hdp/solr/hdp1 hdp/solr/rawdocs
+	fi	
 fi	
 rm -f hdp/solr/rawdocs/core.properties
 
