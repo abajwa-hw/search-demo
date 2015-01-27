@@ -73,7 +73,7 @@ sudo service ambari-server restart
 - This will install and start the Document Crawler   
   - ![Image](../master/screenshots/service-installation.png?raw=true)
 
-- Tail the log file to get detailed status
+- Tail the log file to get detailed status. When you see ```Binding to /0.0.0.0:9090```, then the app is up
 ```
 tail -f /var/log/doc-crawler.log
 ```
@@ -95,7 +95,7 @@ curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hort
 
 
 
-####### Manual setup instructions
+##### Manual setup instructions
 
 - Setup solr user and HDFS dir
 ```
