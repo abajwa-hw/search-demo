@@ -58,7 +58,7 @@ rm -f hdp/solr/rawdocs/core.properties
 /bin/cp -f $DEMO_ROOT/document_crawler/artifacts/schema.xml $SOLR_PATH/solr/hdp/solr/rawdocs/conf/schema.xml
 
 echo "Starting Solr"
-$STACK_PATH/start_solr.sh $SOLR_PATH $DEMO_ROOT $LOGFILE
+$STACK_PATH/package/scripts/start_solr.sh $SOLR_PATH $DEMO_ROOT $LOGFILE
 sleep 10
 #Create core called rawdocs
 curl "http://localhost:8983/solr/admin/cores?action=CREATE&name=rawdocs&instanceDir=$SOLR_PATH/solr/hdp/solr/rawdocs/"
