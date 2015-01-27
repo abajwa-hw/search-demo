@@ -6,5 +6,5 @@ DEMO_ROOT=$1
 LOGFILE=$2
 
 cd $DEMO_ROOT/document_crawler
-sbt run  >> $LOGFILE 2>&1 &
-
+#sbt run  >> $LOGFILE 2>&1 &
+sbt run  >> $LOGFILE &
