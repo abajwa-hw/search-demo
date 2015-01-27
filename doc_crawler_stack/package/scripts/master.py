@@ -39,7 +39,7 @@ class Master(Script):
 
     #Move search docs to HDFS
     Execute('rm -rf '+params.demo_dir+'/RFIsForSolr')
-    Execute('hadoop fs -rm -R '+params.solr_dir+'/data/rfi_raw/*')
+    Execute('hadoop fs -rm -R '+params.demo_dir+'/data/rfi_raw/*')
     Execute('cd '+params.demo_dir+';unzip RFIsForSolr.zip;cd RFIsForSolr;find . -iname \'* *\' -execdir bash -c \'mv "$1" "${1// /_}"\' _ {} \;' )
     Execute('hadoop fs -put '+params.demo_dir+'/RFIsForSolr/* /user/solr/data/rfi_raw/')
 
