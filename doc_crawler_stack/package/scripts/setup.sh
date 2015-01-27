@@ -59,7 +59,7 @@ cd $SOLR_PATH/solr
 cp -r example hdp 
 rm -rf hdp/example* hdp/multicore
 
-if [ ! -d "$SOLR_PATH/solr/hdp/solr/rawdocs/"]; then
+if [ ! -d "$SOLR_PATH/solr/hdp/solr/rawdocs/" ]; then
 	if [ -d "./hdp/solr/collection1" ]; then
 		mv hdp/solr/collection1 hdp/solr/rawdocs
 	else
