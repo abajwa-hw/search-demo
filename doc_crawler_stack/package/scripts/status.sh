@@ -12,6 +12,8 @@ echo "solr status is $RET2"
 # if services are both up...
 if [[ $RET1 -gt 0 && $RET2 -gt 0 ]]
 then
+	$PID1=`ps -ef | grep "sb[t] run" | awk '{print $2}'`
+	echo "Service (pid $PID1) is running..."
 	exit 0
 else 
 	exit 1
