@@ -26,12 +26,14 @@ if [ ! -d "$SOLR_PATH" ]; then
 	ln -s solr-4.7.2 solr
 fi
 
+sudo -u hdfs hdfs dfs -rmr /user/solr/data/rfi_raw
 sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data/rfi_raw
 sudo -u hdfs hdfs dfs -chown solr /user/solr
 sudo -u hdfs hdfs dfs -chmod -R 777 /user
 
 #Move search docs to HDFS
 cd $DEMO_ROOT
+rm -rf RFIsForSolr
 unzip RFIsForSolr.zip
 cd RFIsForSolr
 
