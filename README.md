@@ -44,6 +44,7 @@ git clone https://github.com/abajwa-hw/search-demo.git
 cp -R ~/search-demo/doc_crawler_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
 ```
 - Compile the view and copy jar to Ambari views dir
+```
 cd ~/search-demo/doc_crawler_view
 
 #Tell maven to compile against ambari jar
