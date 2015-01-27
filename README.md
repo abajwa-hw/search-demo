@@ -67,6 +67,7 @@ sudo service ambari-server restart
 ```
 - Now launch Ambari and add the "Document crawler" service via "Actions" > "Add service". 
   - ![Image](../master/screenshots/doc-crawler-service.png?raw=true)
+  - Configure the service if desired and click Deploy
   - ![Image](../master/screenshots/configure-service.png?raw=true)
   
 - This will install and start the Document Crawler   
