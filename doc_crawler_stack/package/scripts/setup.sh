@@ -75,8 +75,9 @@ rm -f hdp/solr/rawdocs/core.properties
 
 echo "Starting Solr"
 $STACK_PATH/package/scripts/start_solr.sh $SOLR_PATH $DEMO_ROOT $LOGFILE
+echo "Waiting 10 seconds for Solr to come up"
 sleep 10
-#Create core called rawdocs
+echo "Creating Solr core called rawdocs"
 curl "http://localhost:8983/solr/admin/cores?action=CREATE&name=rawdocs&instanceDir=$SOLR_PATH/solr/hdp/solr/rawdocs/"
 
 #open Solr 
