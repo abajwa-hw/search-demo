@@ -54,6 +54,7 @@ hadoop fs -put * /user/solr/data/rfi_raw/
 
 
 #Setup Solr
+echo "Setting up Solr and core at $SOLR_PATH"
 cd $SOLR_PATH/solr
 cp -r example hdp 
 rm -rf hdp/example* hdp/multicore

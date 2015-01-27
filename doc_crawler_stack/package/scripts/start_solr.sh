@@ -5,6 +5,7 @@ SOLR_ROOT=$1
 #Logfile e.g. /var/log/doc-crawler.log
 LOGFILE=$2
 
+echo "Starting Solr from $SOLR_ROOT/solr/hdp"
 cd $SOLR_ROOT/solr/hdp
 java -jar start.jar >> $LOGFILE &
 
