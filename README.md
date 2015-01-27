@@ -36,13 +36,14 @@ export M2=$M2_HOME/bin
 export PATH=$PATH:$M2
 ```
 
-- Pull latest code/scripts
+- Pull latest code/scripts and copy Ambari stack to the services dir
 ```
 cd
 git clone https://github.com/abajwa-hw/search-demo.git	
 
 cp -R ~/search-demo/doc_crawler_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
-
+```
+- Compile the view and copy jar to Ambari views dir
 cd ~/search-demo/doc_crawler_view
 
 #Tell maven to compile against ambari jar
@@ -63,14 +64,34 @@ sudo service ambari restart
 #on other HDP 2.2 setups
 sudo service ambari-server restart
 ```
-- Now launch Ambari and add the "Document crawler" service via "Actions" > "Add service". This will setup and start the demo 
+- Now launch Ambari and add the "Document crawler" service via "Actions" > "Add service". 
+  - ![Image](../master/screenshots/doc-crawler-service.png?raw=true)
+  - ![Image](../master/screenshots/configure-service.png?raw=true)
+  
+- This will install and start the Document Crawler   
+  - ![Image](../master/screenshots/service-installation.png?raw=true)
 
-- Once its up, you can access the demo from within Ambari via the "Document Crawler" view
+- Tail the log file to get detailed status
+```
+tail -f /var/log/doc-crawler.log
+```
+  
+- Once its up, you can access the demo from within Ambari via the "Document Crawler" view or at the url below:
+http://sandbox.hortonworks.com:9090
+![Image](../master/screenshots/document-crawler.png?raw=true)
+
+- You can also access Solr webapp at the url below:
+http://sandbox.hortonworks.com:8983/solr/#/rawdocs
 
 - In case you need to remove the Document Crawler stack from Ambari in the future, run below and then restart Ambari:
 ```
 curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
 ``` 
+
+
+
+
+
 
 ####### Manual setup instructions
 
