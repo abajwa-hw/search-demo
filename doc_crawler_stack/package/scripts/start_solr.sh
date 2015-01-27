@@ -7,5 +7,5 @@ LOGFILE=$2
 
 echo "Starting Solr from $SOLR_ROOT/solr/hdp"
 cd $SOLR_ROOT/solr/hdp
-java -jar start.jar >> $LOGFILE &
+java -jar start.jar >> $LOGFILE 2>&1 &
 
