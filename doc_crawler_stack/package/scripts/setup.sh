@@ -73,8 +73,8 @@ rm -f hdp/solr/rawdocs/core.properties
 /bin/cp -f $DEMO_ROOT/document_crawler/artifacts/solrconfig.xml  $SOLR_PATH/solr/hdp/solr/rawdocs/conf/solrconfig.xml
 /bin/cp -f $DEMO_ROOT/document_crawler/artifacts/schema.xml $SOLR_PATH/solr/hdp/solr/rawdocs/conf/schema.xml
 
-echo "$STACK_PATH/package/scripts/start_solr.sh $SOLR_PATH $DEMO_ROOT $LOGFILE"
-$STACK_PATH/package/scripts/start_solr.sh $SOLR_PATH $DEMO_ROOT $LOGFILE
+echo "$STACK_PATH/package/scripts/start_solr.sh $SOLR_PATH $LOGFILE"
+$STACK_PATH/package/scripts/start_solr.sh $SOLR_PATH $LOGFILE
 echo "Waiting 10 seconds for Solr to come up"
 sleep 10
 echo "Creating Solr core called rawdocs"
