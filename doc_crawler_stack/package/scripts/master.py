@@ -70,7 +70,7 @@ class Master(Script):
     Execute('echo "starting mapreduce job"')
     Execute('yarn jar /tmp/hadoop-lws-job-1.2.0-0-0.jar com.lucidworks.hadoop.ingest.IngestJob -Dlww.commit.on.close=true -Dadd.subdirectories=true -cls com.lucidworks.hadoop.ingest.DirectoryIngestMapper -c rawdocs -i /user/solr/data/rfi_raw/ -of com.lucidworks.hadoop.io.LWMapRedOutputFormat -s http://sandbox.hortonworks.com:8983/solr')
 
-    Execute('echo "setup banana"')
+    Execute('echo "setting up banana"')
     Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; mv '+params.solr_dir+'/banana '+params.solr_dir+'/solr-4.7.2/hdp/solr-webapp/webapp/')
 
 
@@ -81,7 +81,7 @@ class Master(Script):
     Execute('echo "Installing sbt, nodejs, npm ..."')
     Execute('curl https://bintray.com/sbt/rpm/rpm > /root/bintray-sbt-rpm.repo')
     Execute('mv /root/bintray-sbt-rpm.repo /etc/yum.repos.d/')
-    Execute('yum install -y sbt nodejs npm')
+    Execute('yum install -y sbt nodejs npm >> ' + params.stack_log)
     Execute('echo "Completed sbt, nodejs, npm install"')
     
     Execute('echo "Starting bower install..."')
