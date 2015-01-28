@@ -36,4 +36,4 @@ service ambari restart
 #service ambari-server restart
 
 echo "Installed Solr/Document Viewer services."
-echo "Now open Ambari, add Solr service, then add 'Dcoument Crawler' service and finally open 'Document Crawler' view in Ambari"
+echo "Now open Ambari (http://sandbox.hortonworks.com),  add Solr service, then add 'Document Crawler' service and finally open 'Document Crawler' view in Ambari"

@@ -28,13 +28,14 @@ git clone https://github.com/abajwa-hw/search-demo.git
 ```
 
 - Now login to Ambari (http://sandbox.hortonworks.com) and add the Solr service via from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
-  - On bottom left -> Actions -> Add service -> check **Solr** -> Next -> Next -> Enter password -> Next -> Deploy
+  - On bottom left -> Actions -> Add service -> check **Solr** -> Next -> Next -> Next -> Deploy. Once completed, click Next -> Complete to exit the wizard.
+  - ![Image](../master/screenshots/addservice.png?raw=true)
   - ![Image](../master/screenshots/solr-service.png?raw=true)
   - Once installed you should see below at the bottom of your Ambari stack
   - ![Image](../master/screenshots/solr-status.png?raw=true)
 
 - Next, add the "Document crawler" service the same way
-  - On bottom left -> Actions -> Add service -> check **Document Crawler** -> Next -> Next -> Enter password -> Next -> Deploy
+  - On bottom left -> Actions -> Add service -> check **Document Crawler** -> Next -> Next -> Next -> Deploy. Once completed, click Next -> Complete to exit the wizard.
   - ![Image](../master/screenshots/doc-crawler-service.png?raw=true)
   - Configure the service if desired and click Deploy
   - ![Image](../master/screenshots/configure-service.png?raw=true)
