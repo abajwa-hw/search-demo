@@ -35,5 +35,7 @@ service ambari restart
 #on other HDP 2.2 setups
 #service ambari-server restart
 
+echo 
+echo
 echo "Installed Solr/Document Viewer services."
 echo "Now open Ambari (http://sandbox.hortonworks.com),  add Solr service, then add 'Document Crawler' service and finally open 'Document Crawler' view in Ambari"
