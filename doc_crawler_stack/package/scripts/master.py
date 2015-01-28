@@ -14,25 +14,6 @@ class Master(Script):
     #Execute(params.stack_dir + '/package/scripts/setup.sh '+ params.stack_dir + ' ' + params.solr_dir + ' ' + params.demo_dir + ' ' + params.stack_log +' >> ' + params.stack_log)
 
 
-
-#if [ ! -d "/opt/solr" ]; then
-#    #solr is not on 2.2 but is installed on sandbox 
-#    adduser solr
-#    mkdir /opt/solr
-#    chown solr /opt/solr
-
-#    sudo -u hdfs hdfs dfs -mkdir -p /user/solr
-#    sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data
-    
-#    #setup solr
-#    cd /opt/solr
-#    wget -q http://apache.mirror.gtcomm.net/lucene/solr/4.7.2/solr-4.7.2.tgz
-#    tar -xvzf solr-4.7.2.tgz
-#    ln -s solr-4.7.2 solr
-#fi
-
-    #TODO: add params.demo_zipfilepath
-
 	#if HDFS dir (/user/solr/data/rfi_raw) already exists, remove it and then create it
     Execute('set +e; sudo -u hdfs hdfs dfs -test -d /user/solr/data/rfi_raw; if [ $? -eq 0 ]; then sudo -u hdfs hdfs dfs -rmr /user/solr/data/rfi_raw; fi')
     Execute('sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data/rfi_raw')
@@ -58,14 +39,10 @@ class Master(Script):
 
 
     #Setup Solr
-    Execute('cd '+params.solr_dir+'/solr; cp -r example hdp ; rm -rf hdp/example* hdp/multicore ; mv hdp/solr/hdp1 hdp/solr/rawdocs ; rm -f hdp/solr/rawdocs/core.properties ; rm -f hdp/solr/rawdocs/core.properties')
+    Execute('cd '+params.solr_dir+'/solr; cp -r example hdp ; rm -rf hdp/example* hdp/multicore')
+    Execute ('cd '+params.solr_dir+'/solr; if [ -d "./hdp/solr/collection1" ]; then mv hdp/solr/collection1 hdp/solr/rawdocs; else mv hdp/solr/hdp1 hdp/solr/rawdocs; fi ')
+    Execute ('cd '+params.solr_dir+'/solr; rm -f hdp/solr/rawdocs/core.properties ; rm -f hdp/solr/rawdocs/core.properties')
     
-#if [ -d "./hdp/solr/collection1" ]; then
-#    mv hdp/solr/collection1 hdp/solr/rawdocs
-#else
-#    mv hdp/solr/hdp1 hdp/solr/rawdocs
-#fi    
-
 
     #replace files from git
     Execute('/bin/cp -f '+params.demo_dir+'/document_crawler/artifacts/solrconfig.xml  '+params.solr_dir+'/solr/hdp/solr/rawdocs/conf/solrconfig.xml')
@@ -115,7 +92,7 @@ class Master(Script):
 
   def configure(self, env):
     import params
-    env.set_params(params)
+    #env.set_params(params)
 
   def stop(self, env):
     import params
