@@ -13,7 +13,7 @@
 
   <property>
     <name>demo.zipfilepath</name>
-    <value>/root/search-demo/RFIsForSolr.zip</value>
+    <value>/root/search-demo/search-docs.zip</value>
     <description>Zipfile containing documents to be searched</description>
   </property>
 
