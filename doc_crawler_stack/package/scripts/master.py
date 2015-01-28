@@ -40,7 +40,7 @@ class Master(Script):
 
     #Setup Solr
     Execute('cd '+params.solr_dir+'/solr; cp -r example hdp ; rm -rf hdp/example* hdp/multicore')
-    Execute ('cd '+params.solr_dir+'/solr; if [ -d "./hdp/solr/collection1" ]; then rsync -av hdp/solr/collection1 hdp/solr/rawdocs; else rsync -av hdp/solr/hdp1 hdp/solr/rawdocs; fi ')
+    Execute ('cd '+params.solr_dir+'/solr; if [ -d "./hdp/solr/collection1" ]; then rsync -av hdp/solr/collection1/* hdp/solr/rawdocs; else rsync -av hdp/solr/hdp1/* hdp/solr/rawdocs; fi ')
     Execute ('cd '+params.solr_dir+'/solr; rm -f hdp/solr/rawdocs/core.properties ; rm -f hdp/solr/rawdocs/core.properties')
     
 
@@ -61,8 +61,8 @@ class Master(Script):
     Execute('yarn jar /tmp/hadoop-lws-job-1.2.0-0-0.jar com.lucidworks.hadoop.ingest.IngestJob -Dlww.commit.on.close=true -Dadd.subdirectories=true -cls com.lucidworks.hadoop.ingest.DirectoryIngestMapper -c rawdocs -i /user/solr/data/rfi_raw/ -of com.lucidworks.hadoop.io.LWMapRedOutputFormat -s http://sandbox.hortonworks.com:8983/solr')
 
     Execute('echo "setting up banana"')
-    #Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; rsync -av '+params.solr_dir+'/banana '+params.solr_dir+'/solr-4.7.2/hdp/solr-webapp/webapp/')
-    Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; rsync -av '+params.solr_dir+'/banana '+params.solr_dir+'/solr-4.7.2/hdp/solr-webapp/webapp/')
+    #Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; rsync -av '+params.solr_dir+'/banana/* '+params.solr_dir+'/solr-4.7.2/hdp/solr-webapp/webapp/')
+    Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; rsync -av '+params.solr_dir+'/banana/* '+params.solr_dir+'/solr-4.7.2/hdp/solr-webapp/webapp/')
 
 
     Execute('echo "change collection1 to rawdocs..."')
