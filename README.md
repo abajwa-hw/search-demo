@@ -36,12 +36,13 @@ export M2=$M2_HOME/bin
 export PATH=$PATH:$M2
 ```
 
-- Pull latest code/scripts and copy Ambari stack to the services dir
+- Pull latest code/sample documents and copy Solr and 'Doc Crawler' Ambari stack to the services dir
 ```
 cd
 git clone https://github.com/abajwa-hw/search-demo.git	
 
 cp -R ~/search-demo/doc_crawler_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
+cp -R ~/search-demo/solr_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
 ```
 - Compile the view and copy jar to Ambari views dir
 ```
@@ -65,7 +66,10 @@ sudo service ambari restart
 #on other HDP 2.2 setups
 sudo service ambari-server restart
 ```
-- Now launch Ambari and add the "Document crawler" service via "Actions" > "Add service". 
+- Now launch Ambari and add the Solr service via "Actions" > "Add service"
+  - ![Image](../master/screenshots/solr-service.png?raw=true)
+
+- Next, add the "Document crawler" service via "Actions" > "Add service". 
   - ![Image](../master/screenshots/doc-crawler-service.png?raw=true)
   - Configure the service if desired and click Deploy
   - ![Image](../master/screenshots/configure-service.png?raw=true)

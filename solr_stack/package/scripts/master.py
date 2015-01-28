@@ -21,15 +21,18 @@ class Master(Script):
 
   def stop(self, env):
     import params
+    Execute('echo "Running ' + params.stack_dir + '/package/scripts/stop.sh"')
     Execute(params.stack_dir + '/package/scripts/stop.sh >> ' + params.stack_log)
       
   def start(self, env):
     import params
+    Execute('echo "Running ' + params.stack_dir + '/package/scripts/start.sh "' +  params.solr_dir + ' ' + params.stack_log)    
     Execute(params.stack_dir + '/package/scripts/start.sh ' + params.solr_dir + ' ' + params.stack_log)
 	
 
   def status(self, env):
     import params
+    Execute('echo "Running ' + params.stack_dir + '/package/scripts/status.sh"')
     Execute(params.stack_dir + '/package/scripts/status.sh >> ' + params.stack_log)
 
 
