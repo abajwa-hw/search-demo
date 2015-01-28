@@ -39,7 +39,7 @@ git clone https://github.com/abajwa-hw/search-demo.git
 - Next, add the "Document crawler" service the same way
   - On bottom left -> Actions -> Add service  check **Document Crawler** -> Next -> Next -> Next -> Deploy. Once completed, click Next -> Complete to exit the wizard.
   - ![Image](../master/screenshots/doc-crawler-service.png?raw=true)
-  - Configure the service if desired and click Deploy
+  - Configure the service if desired and click Deploy. This may run for about 10-15 min depending on our network connection (only first time)
   - ![Image](../master/screenshots/configure-service.png?raw=true)
   
 - This will install and start the Document Crawler   
