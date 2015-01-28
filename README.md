@@ -52,7 +52,8 @@ tail -f /var/log/doc-crawler.log
   
 - Once its up, you can access the demo from within Ambari via the "Document Crawler" view or at the url below:
 http://sandbox.hortonworks.com:9090
-![Image](../master/screenshots/document-crawler.png?raw=true)
+  - ![Image](../master/screenshots/doc-crawler-view.png?raw=true)
+  - ![Image](../master/screenshots/document-crawler.png?raw=true)
 
 - You can also access Solr webapp at the url below:
 http://sandbox.hortonworks.com:8983/solr/#/rawdocs
