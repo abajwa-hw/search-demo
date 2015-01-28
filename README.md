@@ -89,8 +89,10 @@ http://sandbox.hortonworks.com:9090
 - You can also access Solr webapp at the url below:
 http://sandbox.hortonworks.com:8983/solr/#/rawdocs
 
-- In case you need to remove the Document Crawler stack from Ambari in the future, run below and then restart Ambari:
+- In case you need to remove the Solr/Document Crawler stacks from Ambari in the future, run below and then restart Ambari:
 ```
+curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/SOLR
+
 curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
 ``` 
 
