@@ -66,10 +66,18 @@ sudo service ambari restart
 #on other HDP 2.2 setups
 sudo service ambari-server restart
 ```
-- Now launch Ambari and add the Solr service via "Actions" > "Add service". Proceed with remaining wizard screens and click Deploy
+- Then you can click on 'Add Service' from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
+
+On bottom left -> Actions -> Add service -> check VNC Server -> Next -> Next -> Enter password -> Next -> Deploy
+
+- Now launch Ambari and add the Solr service via from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
+  - On bottom left -> Actions -> Add service -> check **Solr** -> Next -> Next -> Enter password -> Next -> Deploy
   - ![Image](../master/screenshots/solr-service.png?raw=true)
+  - Once installed you should see below at the bottom of your Ambari stack
+  - ![Image](../master/screenshots/solr-status.png?raw=true)
 
 - Next, add the "Document crawler" service via "Actions" > "Add service".
+  - On bottom left -> Actions -> Add service -> check **Document Crawler** -> Next -> Next -> Enter password -> Next -> Deploy
   - ![Image](../master/screenshots/doc-crawler-service.png?raw=true)
   - Configure the service if desired and click Deploy
   - ![Image](../master/screenshots/configure-service.png?raw=true)
