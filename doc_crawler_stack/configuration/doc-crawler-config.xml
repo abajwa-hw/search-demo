@@ -14,7 +14,7 @@
   <property>
     <name>demo.searchdir</name>
     <value>/root/search-demo/search-docs</value>
-    <description>Local dir containing documents to be uploaded to HDFS to be searched</description>
+    <description>Local dir whose contents will be uploaded to HDFS to be searched</description>
   </property>
 
   <property>
