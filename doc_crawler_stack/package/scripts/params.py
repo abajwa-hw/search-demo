@@ -9,4 +9,4 @@ stack_dir = config['configurations']['doc-crawler-config']['stack.dir']
 stack_log = config['configurations']['doc-crawler-config']['stack.log']
 demo_dir = config['configurations']['doc-crawler-config']['demo.dir']
 solr_dir = config['configurations']['doc-crawler-config']['solr.dir']
-
+demo_zipfilepath = config['configurations']['doc-crawler-config']['demo.zipfilepath']

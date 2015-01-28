@@ -9,6 +9,14 @@
     <value>/root/search-demo</value>
     <description>Dir containing Document Crawler demo directory</description>
   </property>
+
+
+  <property>
+    <name>demo.zipfilepath</name>
+    <value>/root/search-demo/RFIsForSolr.zip</value>
+    <description>Zipfile containing documents to be searched</description>
+  </property>
+
   <property>
     <name>solr.dir</name>
     <value>/opt/solr</value>

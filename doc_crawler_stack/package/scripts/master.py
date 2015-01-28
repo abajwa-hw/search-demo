@@ -31,17 +31,29 @@ class Master(Script):
 #    ln -s solr-4.7.2 solr
 #fi
 
-
+    #TODO: add params.demo_zipfilepath
 
     Execute('sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data/rfi_raw')
     Execute('sudo -u hdfs hdfs dfs -chown solr /user/solr')
     Execute('sudo -u hdfs hdfs dfs -chmod -R 777 /user')
 
-    #Move search docs to HDFS
-    Execute('rm -rf '+params.demo_dir+'/RFIsForSolr')
+    
+    #e.g. if zipfilepath was set to /root/search-demo/search-docs.zip then this would be /root/search-demo/
+    zipfiledir = os.path.dirname(params.demo_zipfilepath) + os.pathsep
+    #e.g. search-docs.zip
+    zipfilenameext = os.path.basename(params.demo_zipfilepath)
+    #e.g. search-docs
+    zipfilename=os.path.splitext(zipfilenameext)[0]
+    #e.g. /root/search-demo/search-docs
+    zipdirpath = zipfiledir + zipfilename
+    
+    Execute('rm -rf '+zipdirpath)
     #Execute('hadoop fs -rm -R /user/solr/data/rfi_raw/*')
-    Execute('cd '+params.demo_dir+';unzip RFIsForSolr.zip;cd RFIsForSolr;find . -iname \'* *\' -execdir bash -c \'mv "$1" "${1// /_}"\' _ {} \;' )
-    Execute('hadoop fs -put '+params.demo_dir+'/RFIsForSolr/* /user/solr/data/rfi_raw/')
+        
+    Execute('cd '+zipfiledir+';unzip '+zipfilenameext+';cd '+zipfilename+';find . -iname \'* *\' -execdir bash -c \'mv "$1" "${1// /_}"\' _ {} \;' )
+
+    Execute ('echo "Move search docs to HDFS"')
+    Execute('hadoop fs -put '+zipdirpath+'/* /user/solr/data/rfi_raw/')
 
 
     #Setup Solr
