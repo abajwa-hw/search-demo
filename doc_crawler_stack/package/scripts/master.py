@@ -39,7 +39,7 @@ class Master(Script):
 
     
     #e.g. if zipfilepath was set to /root/search-demo/search-docs.zip then this would be /root/search-demo/
-    zipfiledir = os.path.dirname(params.demo_zipfilepath) + os.pathsep
+    zipfiledir = os.path.dirname(params.demo_zipfilepath) + os.sep
     #e.g. search-docs.zip
     zipfilenameext = os.path.basename(params.demo_zipfilepath)
     #e.g. search-docs
