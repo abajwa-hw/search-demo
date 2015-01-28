@@ -32,8 +32,9 @@ class Master(Script):
 
   def status(self, env):
     import params
-    Execute('echo "Running ' + params.stack_dir + '/package/scripts/status.sh"')
-    Execute(params.stack_dir + '/package/scripts/status.sh >> ' + params.stack_log)
+    Execute('nc -tz localhost 8983 > /dev/null 2>&1')
+    #Execute('echo "Running ' + params.stack_dir + '/package/scripts/status.sh"')
+    #Execute(params.stack_dir + '/package/scripts/status.sh >> ' + params.stack_log)
 
 
 

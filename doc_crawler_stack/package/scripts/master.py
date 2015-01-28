@@ -86,7 +86,7 @@ class Master(Script):
     Execute('echo "Starting npm imstall..."')
     Execute('cd  ' + params.demo_dir + '/document_crawler/src/main/webapp' + ' ;' + \
     									'npm install >> ' + params.stack_log + ' ; ')
-    #Execute('npm install >> ' + params.stack_log)
+
     Execute('echo "Stack installed successfully"')
 
 
@@ -105,7 +105,8 @@ class Master(Script):
 
   def status(self, env):
     import params
-    Execute(params.stack_dir + '/package/scripts/status.sh >> ' + params.stack_log)
+    Execute('nc -tz localhost 9090 > /dev/null 2>&1')
+    #Execute(params.stack_dir + '/package/scripts/status.sh >> ' + params.stack_log)
 
 if __name__ == "__main__":
   Master().execute()
