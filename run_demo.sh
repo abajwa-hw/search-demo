@@ -13,9 +13,7 @@ export M2=$M2_HOME/bin
 export PATH=$PATH:$M2
 
 
-#Pull latest code/sample documents and copy Solr and 'Doc Crawler' Ambari stack to the services dir
-cd
-git clone https://github.com/abajwa-hw/search-demo.git	
+#copy Solr and 'Doc Crawler' Ambari stack to the services dir
 cp -R ~/search-demo/doc_crawler_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
 cp -R ~/search-demo/solr_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
 

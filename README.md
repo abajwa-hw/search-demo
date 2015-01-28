@@ -20,63 +20,20 @@ These setup steps are only needed first time
 ```
 ssh root@sandbox.hortonworks.com
 ```
-
-- Install Maven
+- Pull latest code/sample documents and setup Solr and 'Doc Crawler' Ambari stacks and 'Doc Crawler' View
 ```
-mkdir /usr/share/maven
-cd /usr/share/maven
-wget http://mirrors.koehn.com/apache/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
-tar xvzf apache-maven-3.2.5-bin.tar.gz
-ln -s /usr/share/maven/apache-maven-3.2.5/ /usr/share/maven/latest
-echo 'M2_HOME=/usr/share/maven/latest' >> ~/.bashrc
-echo 'M2=$M2_HOME/bin' >> ~/.bashrc
-echo 'PATH=$PATH:$M2' >> ~/.bashrc
-export M2_HOME=/usr/share/maven/latest
-export M2=$M2_HOME/bin
-export PATH=$PATH:$M2
+cd /root
+git clone https://github.com/abajwa-hw/search-demo.git
+~/search-demo/run_demo.sh
 ```
 
-- Pull latest code/sample documents and copy Solr and 'Doc Crawler' Ambari stack to the services dir
-```
-cd
-git clone https://github.com/abajwa-hw/search-demo.git	
-
-cp -R ~/search-demo/doc_crawler_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
-cp -R ~/search-demo/solr_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/services/
-```
-- Compile the view and copy jar to Ambari views dir
-```
-cd ~/search-demo/doc_crawler_view
-
-#Tell maven to compile against ambari jar
-mvn install:install-file -Dfile=/usr/lib/ambari-server/ambari-views-1.7.0.169.jar -DgroupId=org.apache.ambari -DartifactId=ambari-views -Dversion=1.3.0-SNAPSHOT -Dpackaging=jar
-
-#Compile view
-mvn clean package
-
-#move jar to Ambari dir
-cp target/*.jar /var/lib/ambari-server/resources/views
-```
-
-- Restart Ambari
-```
-#on HDP 2.2 sandbox
-sudo service ambari restart
-
-#on other HDP 2.2 setups
-sudo service ambari-server restart
-```
-- Then you can click on 'Add Service' from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
-
-On bottom left -> Actions -> Add service -> check VNC Server -> Next -> Next -> Enter password -> Next -> Deploy
-
-- Now launch Ambari and add the Solr service via from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
+- Now login to Ambari (http://sandbox.hortonworks.com) and add the Solr service via from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
   - On bottom left -> Actions -> Add service -> check **Solr** -> Next -> Next -> Enter password -> Next -> Deploy
   - ![Image](../master/screenshots/solr-service.png?raw=true)
   - Once installed you should see below at the bottom of your Ambari stack
   - ![Image](../master/screenshots/solr-status.png?raw=true)
 
-- Next, add the "Document crawler" service via "Actions" > "Add service".
+- Next, add the "Document crawler" service the same way
   - On bottom left -> Actions -> Add service -> check **Document Crawler** -> Next -> Next -> Enter password -> Next -> Deploy
   - ![Image](../master/screenshots/doc-crawler-service.png?raw=true)
   - Configure the service if desired and click Deploy
