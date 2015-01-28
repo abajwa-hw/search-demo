@@ -27,7 +27,7 @@ git clone https://github.com/abajwa-hw/search-demo.git
 ~/search-demo/run_demo.sh
 ```
 
-- Now login to Ambari (http://sandbox.hortonworks.com) and add the Solr service via from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
+- After script completes, login to Ambari (http://sandbox.hortonworks.com) and add the Solr service via from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
   - On bottom left -> Actions -> Add service
   - ![Image](../master/screenshots/addservice.png?raw=true)
   - Now select check **Solr** -> Next
