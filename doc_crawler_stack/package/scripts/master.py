@@ -33,10 +33,11 @@ class Master(Script):
 
     #TODO: add params.demo_zipfilepath
 
+	#if HDFS dir (/user/solr/data/rfi_raw) already exists, remove it and then create it
+    Execute('set +e; sudo -u hdfs hdfs dfs -test -d /user/solr/data/rfi_raw; if [ $? -eq 0 ]; then sudo -u hdfs hdfs dfs -rmr /user/solr/data/rfi_raw; fi')
     Execute('sudo -u hdfs hdfs dfs -mkdir -p /user/solr/data/rfi_raw')
     Execute('sudo -u hdfs hdfs dfs -chown solr /user/solr')
     Execute('sudo -u hdfs hdfs dfs -chmod -R 777 /user')
-
     
     #e.g. if zipfilepath was set to /root/search-demo/search-docs.zip then this would be /root/search-demo/
     zipfiledir = os.path.dirname(params.demo_zipfilepath) + os.sep
