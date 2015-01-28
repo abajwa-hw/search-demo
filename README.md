@@ -50,9 +50,9 @@ git clone https://github.com/abajwa-hw/search-demo.git
 tail -f /var/log/doc-crawler.log
 ```
   
-- Once its up, you can access the demo from within Ambari via the "Document Crawler" view or at the url below:
-http://sandbox.hortonworks.com:9090
+- Once its up, you can access the demo from within Ambari via the "Document Crawler" view or by opening http://sandbox.hortonworks.com:9090
   - ![Image](../master/screenshots/doc-crawler-view.png?raw=true)
+  - Enter a search query and click Search button. Open a document and notice the searched term will be highlighted within it.
   - ![Image](../master/screenshots/document-crawler.png?raw=true)
 
 - You can also access Solr webapp at the url below:
