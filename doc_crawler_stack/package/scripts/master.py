@@ -34,7 +34,8 @@ class Master(Script):
     #Execute('hadoop fs -rm -R /user/solr/data/rfi_raw/*')
         
     #unzip the sample zip into searchdir and replace all spaces in filename with _    
-    Execute(unzip '+params.demo_samplezip+' -d '+ params.demo_searchdir + ';cd '+zipfilename+';find '+params.demo_searchdir+' -iname \'* *\' -execdir bash -c \'mv "$1" "${1// /_}"\' _ {} \;' )
+    Execute('unzip '+params.demo_samplezip+' -d '+ params.demo_searchdir)
+    Execute('find '+params.demo_searchdir+' -iname \'* *\' -execdir bash -c \'mv "$1" "${1// /_}"\' _ {} \;' )
 
     Execute ('echo "Copying search docs to HDFS under /user/solr/data/rfi_raw" >> ' + params.stack_log)
     Execute('hadoop fs -put '+zipdirpath+'/* /user/solr/data/rfi_raw/' + + params.stack_log)
