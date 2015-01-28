@@ -87,6 +87,10 @@ class Master(Script):
     Execute('cd  ' + params.demo_dir + '/document_crawler/src/main/webapp' + ' ;' + \
     									'npm install >> ' + params.stack_log + ' ; ')
 
+    Execute(params.stack_dir + '/package/scripts/start.sh ' + params.solr_dir + ' ' + params.demo_dir + ' ' + params.stack_log +' >> ' + params.stack_log)
+    #sleep until service is up - first time can take upto 5min
+    Execute(RET=1; until [[ $RET -eq 0 ]]; do echo "Sleeping until service is up..." ; sleep 5; nc -tz localhost 9092 > /dev/null 2>&1; RET=$?; done)
+
     Execute('echo "Stack installed successfully"')
 
 
