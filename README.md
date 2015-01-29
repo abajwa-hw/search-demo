@@ -5,6 +5,11 @@ The webinar recording and slides are available at http://hortonworks.com/partner
 
 #### Demo overview
 
+- Apache Solr + Lucidworks Connector Document Search
+  - Apache Solr provides a REST-like interface for searching indexed data. 
+  - The search syntax follows the pattern of 'field:search query'. Those fields correspond to the schema defined in the Apache Solr Core. 
+  - Lucidworks provides a connector allowing users to index multi-structured document data such as PDF, Docx, VSD, and XLSX.
+  - Authors: Paul Codding, Joseph Niemiec, Piotr Pruski. 
 
 ##### Setup 
 
@@ -58,12 +63,10 @@ tail -f /var/log/doc-crawler.log
 - You can also access Solr webapp at the url below:
 http://sandbox.hortonworks.com:8983/solr/#/rawdocs
 
-- In case you need to remove the Solr/Document Crawler stacks from Ambari in the future, run below and then restart Ambari:
-```
-curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/SOLR
 
-curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
-``` 
+##### Post setup
+ - Once the demo is setup the first time, to restart it (e.g. after VM reboot), simply start the "Document Crawler" service from Ambari and open the "Document Crawler" view 
+
 
 ##### Try your own documents
 
@@ -75,8 +78,17 @@ unzip /path/to/my/docs.zip -d ~/search-demo/search-docs/
 ```
 Now go back to the Document Crawler view and run some queries
 
-- Alternatively, you can create an HDFS mount on your Mac and drag/drop the documents directly to /user/solr/data/rfi_raw dir in HDFS. In this scenario, you would run the script without the 'clean' argument to just run the mapreduce job without cleaning HDFS
+- Alternatively, you can [create an HDFS mount on your Mac](https://github.com/abajwa-hw/search-demo/tree/master/document_crawler) and drag/drop the documents directly to /user/solr/data/rfi_raw dir in HDFS. In this scenario, you would run the script without the 'clean' argument to just run the mapreduce job without cleaning HDFS
 ```
 ~/search-demo/regenerate_solr.sh
 ```
 Now go back to the Document Crawler view and run some queries
+
+ 
+##### Removal
+ - In case you need to remove the Solr/Document Crawler stacks from Ambari in the future, run below and then restart Ambari:
+```
+curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/SOLR
+
+curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
+``` 
