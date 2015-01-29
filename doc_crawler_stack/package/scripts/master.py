@@ -30,8 +30,8 @@ class Master(Script):
     #e.g. /root/search-demo/search-docs
     #zipdirpath = zipfiledir + zipfilename
     
-    #Execute('rm -rf '+zipdirpath)
-    #Execute('hadoop fs -rm -R /user/solr/data/rfi_raw/*')
+    Execute('echo Emptying staging dir' +params.demo_searchdir + ' >> ' + params.stack_log )
+    Execute('rm -rf '+params.demo_searchdir)
         
     #unzip the sample zip into searchdir and replace all spaces in filename with _    
     Execute('unzip '+params.demo_samplezip+' -d '+ params.demo_searchdir)
