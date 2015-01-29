@@ -5,7 +5,9 @@
         <service>
             <name>DOCCRAWLER</name>
             <displayName>Document Crawler</displayName>
-            <comment>Document Crawler</comment>
+            <comment>Apache Solr + Lucidworks Connector Document Search for documents such as PDF, Docx, VSD, and XLSX
+            Credits: Paul Codding, Joseph Niemiec, Piotr Pruski, Ali Bajwa
+            </comment>
             <version>1.0.0</version>
             <components>
                 <component>
