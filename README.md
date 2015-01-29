@@ -65,4 +65,18 @@ curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hort
 curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/DOCCRAWLER
 ``` 
 
+##### Try your own documents
 
+- After the Document Crawler is working, you can FTP your own document zip and run below to clear the HDFS dir and create new index using the new zip
+```
+/bin/rm -rf ~/search-demo/search-docs/*
+unzip /path/to/my/docs.zip -d ~/search-demo/search-docs/
+~/search-demo/regenerate_solr.sh clean
+```
+Now go back to the Document Crawler view and run some queries
+
+- Alternatively, you can create an HDFS mount on your Mac and drag/drop the documents directly to /user/solr/data/rfi_raw dir in HDFS. In this scenario, you would run the script without the 'clean' argument to just run the mapreduce job without cleaning HDFS
+```
+~/search-demo/regenerate_solr.sh
+```
+Now go back to the Document Crawler view and run some queries
