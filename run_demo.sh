@@ -1,3 +1,4 @@
+#!/bin/bash
 
 #Install Maven
 mkdir /usr/share/maven
