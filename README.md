@@ -99,6 +99,7 @@ Now go back to the Document Crawler view and run some queries
 
 - Create a Banana dashboard webapp. Banana should be accessible here
 http://sandbox.hortonworks.com:8983/solr/banana/src/index.html#/dashboard
+![Image](../master/screenshots/banana.png?raw=true)
  
 ##### Removal for services
  - In case you need to remove the Solr/Document Crawler stacks from Ambari in the future, run below and then restart Ambari:
