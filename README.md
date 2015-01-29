@@ -97,7 +97,7 @@ Now go back to the Document Crawler view and run some queries
 
 ##### Other things to try
 
-- Create a Banana dashboard webapp. Banana should be accessible here
+- Create a Banana dashboard webapp. Banana should be accessible at the below, showing the default starting page
 http://sandbox.hortonworks.com:8983/solr/banana/src/index.html#/dashboard
 ![Image](../master/screenshots/banana.png?raw=true)
  
