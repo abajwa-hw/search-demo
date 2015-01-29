@@ -14,7 +14,7 @@
   <property>
     <name>demo.searchdir</name>
     <value>/root/search-demo/search-docs</value>
-    <description>Local staging dir where sample data in unzipped. This dir will be emptied!</description>
+    <description>Local staging dir where sample data will be unzipped. This dir will be emptied first!</description>
   </property>
 
   <property>
