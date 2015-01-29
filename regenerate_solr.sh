@@ -1,6 +1,12 @@
 #!/bin/bash
-echo "Cleaning HDFS doc dir: /user/solr/data/rfi_raw"
-sudo -u hdfs hdfs dfs -rmr /user/solr/data/rfi_raw/*
+MODE=$1
+
+if [[ "$MODE"="clean" ]]
+then
+	echo "Cleaning HDFS doc dir: /user/solr/data/rfi_raw"
+	sudo -u hdfs hdfs dfs -rmr /user/solr/data/rfi_raw/*
+fi
+
 find /root/search-demo/search-docs -iname '* *' -execdir bash -c 'mv "$1" "${1// /_}"' _ {} \;
 echo "Copying search docs from /root/search-demo/search-docs to HDFS under /user/solr/data/rfi_raw"
 hadoop fs -put /root/search-demo/search-docs/* /user/solr/data/rfi_raw/
