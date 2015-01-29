@@ -38,7 +38,7 @@ class Master(Script):
     Execute('find '+params.demo_searchdir+' -iname \'* *\' -execdir bash -c \'mv "$1" "${1// /_}"\' _ {} \;' )
 
     Execute ('echo "Copying search docs to HDFS under /user/solr/data/rfi_raw" >> ' + params.stack_log)
-    Execute('hadoop fs -put '+params.demo_searchdir+'/* /user/solr/data/rfi_raw/' + + params.stack_log)
+    Execute('hadoop fs -put '+params.demo_searchdir+'/* /user/solr/data/rfi_raw/ >> ' + params.stack_log)
 
 
     #Setup Solr
