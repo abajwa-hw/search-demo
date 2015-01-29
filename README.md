@@ -9,7 +9,7 @@ The webinar recording and slides are available at http://hortonworks.com/partner
   - Apache Solr provides a REST-like interface for searching indexed data. 
   - The search syntax follows the pattern of 'field:search query'. Those fields correspond to the schema defined in the Apache Solr Core. 
   - Lucidworks provides a connector allowing users to index multi-structured document data such as PDF, Docx, VSD, and XLSX.
-  - Authors: Paul Codding, Joseph Niemiec, Piotr Pruski. 
+  - Authors: Paul Codding, Joseph Niemiec, Piotr Pruski. Automation of setup via Ambari services and views: Ali Bajwa
 
 ##### Setup 
 
