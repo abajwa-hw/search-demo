@@ -61,8 +61,18 @@ tail -f /var/log/doc-crawler.log
   - Enter a search query and click Search button. Open a document and notice the searched term will be highlighted within it.
   - ![Image](../master/screenshots/document-crawler.png?raw=true)
 
-- You can also access Solr webapp at the url below:
+- You can also access Solr webapp at the url below and try some queries. 
 http://sandbox.hortonworks.com:8983/solr/#/rawdocs
+![Image](../master/screenshots/screenshot-solr.png?raw=true)
+  - Notice that the metadata of each document appears in the result of the query and that the "body_s" field contains the entire document
+  - You can also run the same query in the browser or via programatic HTTP request. Try changing the output format by altering the wt param in the url e.g. &wt=json or &wt=xml
+  http://sandbox.hortonworks.com:8983/solr/rawdocs/select?q=Getting+Started&wt=json&indent=true
+
+##### Code snippets
+
+- To see code snippets of how the javascript calls are made to query Solr, refer to:
+  - [services.js](https://github.com/abajwa-hw/search-demo/blob/master/document_crawler/src/main/webapp/app/js/services.js#L12)
+  - [controllers.js](https://github.com/abajwa-hw/search-demo/blob/master/document_crawler/src/main/webapp/app/js/controllers.js#L35) 
 
 
 ##### Post setup
