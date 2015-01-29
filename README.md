@@ -9,6 +9,7 @@ The webinar recording and slides are available at http://hortonworks.com/partner
   - Apache Solr provides a REST-like interface for searching indexed data. 
   - The search syntax follows the pattern of 'field:search query'. Those fields correspond to the schema defined in the Apache Solr Core. 
   - Lucidworks provides a connector allowing users to index multi-structured document data such as PDF, Docx, VSD, and XLSX.
+  - The sample documents used this demo are the PDFs from docs.hortonworks.com but instructions have been provided to allow users to search their own.
   - Authors: Paul Codding, Joseph Niemiec, Piotr Pruski. Automation of setup via Ambari services and views: Ali Bajwa
 
 ##### Setup 
@@ -55,7 +56,7 @@ git clone https://github.com/abajwa-hw/search-demo.git
 tail -f /var/log/doc-crawler.log
 ```
   
-- Once its up, you can access the demo from within Ambari via the "Document Crawler" view or by opening http://sandbox.hortonworks.com:9090
+- Once the service is up, you can access the demo from within Ambari via the "Document Crawler" view or by opening http://sandbox.hortonworks.com:9090
   - ![Image](../master/screenshots/doc-crawler-view.png?raw=true)
   - Enter a search query and click Search button. Open a document and notice the searched term will be highlighted within it.
   - ![Image](../master/screenshots/document-crawler.png?raw=true)
@@ -89,7 +90,7 @@ Now go back to the Document Crawler view and run some queries
 - Create a Banana dashboard webapp. Banana should be accessible here
 http://sandbox.hortonworks.com:8983/solr/banana/src/index.html#/dashboard
  
-##### Removal
+##### Removal for services
  - In case you need to remove the Solr/Document Crawler stacks from Ambari in the future, run below and then restart Ambari:
 ```
 curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/SOLR
