@@ -118,7 +118,7 @@
     -->
 
   <directoryFactory name="DirectoryFactory" class="solr.HdfsDirectoryFactory">
-      <str name="solr.hdfs.home">hdfs://sandbox.hortonworks.com:8020/user/solr</str>
+      <str name="solr.hdfs.home">__SOLR_HDFS_HOME__</str>
       <bool name="solr.hdfs.blockcache.enabled">true</bool>
       <int name="solr.hdfs.blockcache.slab.count">1</int>
       <bool name="solr.hdfs.blockcache.direct.memory.allocation">true</bool>

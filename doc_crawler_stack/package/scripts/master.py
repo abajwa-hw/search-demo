@@ -52,6 +52,9 @@ class Master(Script):
     Execute('/bin/cp -f '+params.demo_dir+'/document_crawler/artifacts/solrconfig.xml  '+params.solr_dir+'/solr/hdp/solr/rawdocs/conf/solrconfig.xml')
     Execute('/bin/cp -f '+params.demo_dir+'/document_crawler/artifacts/schema.xml '+params.solr_dir+'/solr/hdp/solr/rawdocs/conf/schema.xml')
 
+	#replace Solr HDFS home param in solrconfig.xml
+    Execute('sed -i "s/__SOLR_HDFS_HOME__/'+params.solr_hdfshome+'/g" ' + params.solr_dir+'/solr/hdp/solr/rawdocs/conf/solrconfig.xml')
+        
     Execute('echo "Checking if Solr is running...." >>' + params.stack_log)
     Execute(params.stack_dir + '/package/scripts/start_solr.sh ' + params.solr_dir + ' ' + params.stack_log)
     Execute('sleep 10')

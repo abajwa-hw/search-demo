@@ -11,3 +11,5 @@ demo_dir = config['configurations']['doc-crawler-config']['demo.dir']
 solr_dir = config['configurations']['doc-crawler-config']['solr.dir']
 demo_searchdir = config['configurations']['doc-crawler-config']['demo.searchdir']
 demo_samplezip = config['configurations']['doc-crawler-config']['demo.samplezip']
+solr_hdfshome = config['configurations']['doc-crawler-config']['solr.hdfs.home']
+

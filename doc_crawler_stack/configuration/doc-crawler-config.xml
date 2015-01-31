@@ -4,6 +4,15 @@
 <configuration>
 
 
+
+
+  <property>
+    <name>solr.hdfs.home</name>
+    <value>hdfs://sandbox.hortonworks.com:8020/user/solr</value>
+    <description>Solr home directory on HDFS - replace with your name node host</description>
+  </property>
+
+
   <property>
     <name>demo.dir</name>
     <value>/root/search-demo</value>
