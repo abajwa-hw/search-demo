@@ -112,7 +112,7 @@ echo "Completed sbt, nodejs, npm install"
 #echo "Starting bower install..."
 #cd $DEMO_ROOT/document_crawler/src/main/webapp
 #npm install -g bower >> $LOGFILE
-#bower install --allow-root --config.interactive=false $DEMO_ROOT/coe-int-master/ >> $LOGFILE
+#bower install --allow-root --config.interactive=false $DEMO_ROOT/assembly-ui/ >> $LOGFILE
 #echo "Completed bower install"
 
 #echo "Starting npm imstall..."
