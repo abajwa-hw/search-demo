@@ -70,11 +70,11 @@ class Master(Script):
 
     Execute('echo "setting up banana" >> '  + params.stack_log)
     #Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; rsync -av '+params.solr_dir+'/banana/* '+params.solr_dir+'/solr-4.7.2/hdp/solr-webapp/webapp/')
-    Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; mv '+params.solr_dir+'/banana/ '+params.solr_dir+'/solr-4.7.2/hdp/solr-webapp/webapp/')
+    Execute('cd /opt/solr ; git clone https://github.com/LucidWorks/banana.git ; mv '+params.solr_dir+'/banana/ '+params.solr_dir+'/solr-4*/hdp/solr-webapp/webapp/')
 
 
     Execute('echo "change collection1 to rawdocs..." >> '  + params.stack_log)
-    Execute('sed -i "s/collection1/rawdocs/g" ' + params.solr_dir + '/solr-4.7.2/hdp/solr-webapp/webapp/banana/src/app/dashboards/default.json')
+    Execute('sed -i "s/collection1/rawdocs/g" ' + params.solr_dir + '/solr-4*/hdp/solr-webapp/webapp/banana/src/app/dashboards/default.json')
 
 
     Execute('echo "Installing sbt, nodejs, npm ..." >> ' +  params.stack_log)
