@@ -25,7 +25,8 @@
   <version>1.0-SNAPSHOT</version>  
 
   <properties>
-    <ambari.version>1.3.0-SNAPSHOT</ambari.version>
+    <!-- <ambari.version>1.3.0-SNAPSHOT</ambari.version> -->
+    <ambari.version>1.7.0.0</ambari.version>
   </properties>
   <dependencies>
     <dependency>
