@@ -86,9 +86,9 @@ class Master(Script):
     Execute('echo "Starting bower install..." >> ' + params.stack_log)
     Execute('cd ' + params.demo_dir + '/document_crawler/src/main/webapp' + ' ; ' + \
                                       'npm install -g bower >> ' + params.stack_log + ' ; ' + \
-                                      'bower install --allow-root --config.interactive=false ' + params.demo_dir + '/assembly-ui/ >> ' + params.stack_log + ' ; ')
+                                      'bower install --allow-root --config.interactive=false ' + params.demo_dir + '/coe-int-master/ >> ' + params.stack_log + ' ; ')
     #Execute('npm install -g bower >> ' + params.stack_log)
-    #Execute('bower install --allow-root --config.interactive=false $DEMO_ROOT/assembly-ui/ >> ' + params.stack_log)
+    #Execute('bower install --allow-root --config.interactive=false $DEMO_ROOT/coe-int-master/ >> ' + params.stack_log)
     Execute('echo "Completed bower install" >> '  + params.stack_log)
 
     Execute('echo "Starting npm imstall..." >> '  + params.stack_log)
