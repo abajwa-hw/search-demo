@@ -21,8 +21,8 @@ cp -R ~/search-demo/solr_stack /var/lib/ambari-server/resources/stacks/HDP/2.2/s
 #Compile the view and copy jar to Ambari views dir
 cd ~/search-demo/doc_crawler_view
 
-#Tell maven to compile against ambari jar
-mvn install:install-file -Dfile=/usr/lib/ambari-server/ambari-views-1.7.0.169.jar -DgroupId=org.apache.ambari -DartifactId=ambari-views -Dversion=1.3.0-SNAPSHOT -Dpackaging=jar
+#No longer needed - tell maven to compile against ambari jar
+#mvn install:install-file -Dfile=/usr/lib/ambari-server/ambari-views-1.7.0.169.jar -DgroupId=org.apache.ambari -DartifactId=ambari-views -Dversion=1.3.0-SNAPSHOT -Dpackaging=jar
 
 #Compile view
 mvn clean package
